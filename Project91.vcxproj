@@ -126,10 +126,14 @@
   <ItemGroup>
     <ClCompile Include="AccountManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Question.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccountManager.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="Question.h" />
     <ClInclude Include="Statics.h" />
     <ClInclude Include="Test.h" />

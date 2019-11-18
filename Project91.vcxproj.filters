@@ -25,15 +25,33 @@
     <Filter Include="Header Files\Statics">
       <UniqueIdentifier>{d8e2a6a6-0f86-48ce-829c-64c52b80550c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Manager">
+      <UniqueIdentifier>{2ef5bec0-5af1-4659-9391-788687398ca4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{66d6efbc-b9ed-4b8a-9993-3707f03767ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\User">
+      <UniqueIdentifier>{e6222d0e-a4fe-4fd8-a1d3-ebff832ecee5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>main</Filter>
     </ClCompile>
-    <ClCompile Include="User.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="AccountManager.cpp">
+      <Filter>Source Files\User</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Question.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="Statics.h">
       <Filter>Header Files\Statics</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

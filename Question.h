@@ -4,12 +4,12 @@
 class Question
 {
 public:
-	void setCorrectVariant();
-	void setQuestion();
-	void setVariant();
+	void setCorrectVariant(char correctVariant);
+	void setQuestion(std::string question);
+	void setVariant(std::string variant, std::size_t index);
 
 	std::string getQuestion();
-	std::string getVariant();
+	std::string getVariant(std::size_t index);
 	char getCorrectVariant();
 
 private:

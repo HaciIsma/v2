@@ -1,15 +1,10 @@
 #include <iostream>
-#include "AccountManager.h"
+#include "Manager.h"
 
 
 int main()
 {
-	AccountManager a;
-	a.usersWriteVector();
-	//a.signUp();
-	//
-	//a.usersWriteFile();
-
-
+	Manager manager;
+	manager.control();
 	system("pause");
 }

@@ -31,7 +31,7 @@ void AccountManager::signUp()
 	std::cout << "Password: ";
 	std::getline(std::cin, password);
 	temp.setPassword(password);
-	
+
 	users.push_back(temp);
 }
 
@@ -43,7 +43,7 @@ bool is_empty(std::ifstream& pFile)
 void AccountManager::usersWriteFile()
 {
 	std::ofstream write;
-	write.open("UsersInfo.txt",std::ios::app);
+	write.open("UsersInfo.txt", std::ios::app);
 	bool check = false;
 
 	if (write.is_open())
@@ -69,9 +69,9 @@ void AccountManager::usersWriteFile()
 			write << users[i].getSurname() << "\n";
 			write << users[i].getTelephone() << "\n";
 			write << users[i].getUsername() << "\n";
-			if (i==len-1)
+			if (i == len - 1)
 			{
-			write << users[i].getPassword();
+				write << users[i].getPassword();
 			}
 			else
 			{
@@ -89,7 +89,7 @@ void AccountManager::usersWriteFile()
 void AccountManager::usersWriteVector()
 {
 	std::ifstream read;
-	read.open("UsersInfo.txt",std::ios::app);
+	read.open("UsersInfo.txt", std::ios::app);
 	if (read.is_open())
 	{
 		User temp;
@@ -101,10 +101,10 @@ void AccountManager::usersWriteVector()
 			std::size_t count = 0;
 			while (count != 5)
 			{
-			/*	if (read.eof())
-				{
-					break;
-				}*/
+				/*	if (read.eof())
+					{
+						break;
+					}*/
 				read >> reading;
 				word = reading;
 				switch (count)
@@ -136,6 +136,33 @@ void AccountManager::usersWriteVector()
 	read.close();
 }
 
-void signIn()
+void AccountManager::signIn()
 {
+	std::string checkUsername;
+	std::string checkPassword;
+
+	std::cout << "Username: ";
+	std::getline(std::cin, checkUsername);
+
+	std::size_t len = users.size();
+
+	for (size_t i = 0; i < len; i++)
+	{
+		if (users[i].getUsername() == checkUsername)
+		{
+			std::cout << "Password: ";
+			std::getline(std::cin, checkPassword);
+			if (users[i].getPassword() == checkPassword)
+			{
+				std::cout << "Welcome system" << '\n';
+				return;
+			}
+			else
+			{
+				std::cout << "Wrong password" << '\n';
+				return;
+			}
+		}
+	}
+	std::cout << "Wrong username" << '\n';
 }

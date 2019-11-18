@@ -5,8 +5,8 @@
 class Test
 {
 public:
-	void setName();
-	void setCategory();
+	void setName(std::string name);
+	void setCategory(std::string category);
 
 	std::string getName();
 	std::string getCategory();

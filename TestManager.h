@@ -21,5 +21,5 @@ public:
 
 private:
 	std::vector<Test>tests;
-	std::vector<Test>pauseTests;
+//	std::vector<Test>pauseTests;
 };
