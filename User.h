@@ -3,11 +3,11 @@
 class User
 {
 public:
-	void setName();
-	void setSurname();
-	void setTelephone();
-	void setUsername();
-	void setPassword();
+	void setName(std::string name);
+	void setSurname(std::string surname);
+	void setTelephone(std::string telephone);
+	void setUsername(std::string username);
+	void setPassword(std::string password);
 
 	std::string getName();
 	std::string getSurname();
