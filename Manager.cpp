@@ -4,14 +4,7 @@
 
 void Manager::control()
 {
-	TestManager t1;
-	AccountManager a;
-	//a.usersWriteVector();
-	//a.signUp();
-	//
-	//a.usersWriteFile();
-
-	t1.addTest();
-
-	//a.signIn();
+	TestManager a;
+	a.addTest();
+	a.writeFileTest();
 }

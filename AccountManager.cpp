@@ -101,10 +101,6 @@ void AccountManager::usersWriteVector()
 			std::size_t count = 0;
 			while (count != 5)
 			{
-				/*	if (read.eof())
-					{
-						break;
-					}*/
 				read >> reading;
 				word = reading;
 				switch (count)
@@ -122,10 +118,6 @@ void AccountManager::usersWriteVector()
 				}
 				count++;
 			}
-			/*if (read.eof())
-			{
-				break;
-			}*/
 		}
 		users.push_back(temp);
 	}

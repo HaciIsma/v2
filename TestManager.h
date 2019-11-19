@@ -8,8 +8,8 @@ public:
 	TestManager() = default;
 
 	void addTest();
-	//void writeVectorTest();
-	//void writeFileTest();
+	void writeFileTest();
+	void writeVectorTest();
 	////
 	//void Result();
 	////

@@ -3,6 +3,7 @@
 #include "Test.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 
 void TestManager::addTest()
 {
@@ -44,12 +45,94 @@ void TestManager::addTest()
 	tests.push_back(temp);
 }
 
+bool is_empty1(std::ifstream& pFile)
+{
+	return pFile.peek() == std::ifstream::traits_type::eof();
+}
+
+void TestManager::writeFileTest()
+{
+	std::ofstream write;
+	write.open("Test", std::ios::app);
+	bool check = false;
+
+	if (write.is_open())
+	{
+		std::size_t len = tests.size();
+		for (size_t i = 0; i < len; i++)
+		{
+			std::ifstream read("Test");
+			if (is_empty1(read))
+			{
+				check = true;
+			}
+			read.close();
+
+			if (check)
+			{
+				write << tests[i].getName() << "\n";
+			}
+			else
+			{
+				write << "\n" << tests[i].getName() << "\n";
+			}
+			write << tests[i].getName() << "\n";
+			write << tests[i].getCategory() << "\n";
+			std::size_t len2 = tests[i].quiz.size();
+			for (size_t k = 0; k < len2; k++)
+			{
+				write << tests[i].quiz[k].getQuestion() << "\n";
+				for (size_t j = 0; j < 4; j++)
+				{
+					if ((i == len - 1) && (k == len2 - 1) && (j == 3))
+					{
+						write << tests[i].quiz[k].getVariant(j);
+					}
+					else
+					{
+						write << tests[i].quiz[k].getVariant(j) << "\n";
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		std::cout << "File cannot open" << '\n';
+	}
+}
+
+void TestManager::writeVectorTest()
+{
+	std::ifstream read;
+	std::string reading;
+	std::string word;
+	read.open("Test");
+	if (read.is_open())
+	{
+		Test temp;
+		Question tmp;
+		while (!read.eof())
+		{
+			std::size_t count = 0;
+			while (true)
+			{
+				read >> reading;
+				word = reading;
+				count++;
+			}
+
+		}
+		
+	}
+	else
+	{
+		std::cout << "File cannot open ";
+	}
+}
 
 
 
-
-//void TestManager::writeVectorTest();
-//void TestManager::writeFileTest();
 ////
 //void TestManager::Result();
 ////
