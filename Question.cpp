@@ -1,6 +1,7 @@
 #include "Question.h"
+#include <string>
 
-void Question::setCorrectVariant(char correctVariant)
+void Question::setCorrectVariant(std::string correctVariant)
 {
 	this->correctVariant = correctVariant;
 }
@@ -21,7 +22,10 @@ std::string Question::getVariant(std::size_t index)
 {
 	return variant[index];
 }
-char Question::getCorrectVariant()
+std::string Question::getCorrectVariant()
 {
 	return correctVariant;
 }
+
+
+

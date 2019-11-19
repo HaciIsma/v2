@@ -4,7 +4,7 @@
 
 void Manager::control()
 {
-	TestManager a;
-	a.addTest();
-	a.writeFileTest();
+	TestManager manager;
+	manager.addTest();
+	manager.writeFileTest();
 }

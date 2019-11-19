@@ -1,3 +1,2 @@
 ﻿  TestManager.cpp
-C:\Users\Step\Desktop\v2\v2\TestManager.cpp(209,63): warning C4302: 'reinterpret_cast': truncation from 'std::string *' to 'char'
   Project91.vcxproj -> C:\Users\Step\Desktop\x64\Debug\Test Sistemi.exe

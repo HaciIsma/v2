@@ -77,8 +77,6 @@ void TestManager::writeFileTest()
 				writeT << "\n" << tests[i].getName() << "\n";
 			}
 
-			//std::cout << "";
-
 			if (i == len - 1)
 			{
 				writeT << tests[i].getCategory();
@@ -96,7 +94,7 @@ void TestManager::writeFileTest()
 	writeT.close();
 
 	std::ofstream writeQ;
-	writeQ.open("Question");
+	writeQ.open("Question", std::ios::app);
 	bool check1 = false;
 	if (writeQ.is_open())
 	{
@@ -113,7 +111,7 @@ void TestManager::writeFileTest()
 					check1 = true;
 				}
 				read.close();
-				if (check)
+				if (check1)
 				{
 					writeQ << tests[i].quiz[k].getQuestion() << "\n";
 				}
@@ -126,7 +124,7 @@ void TestManager::writeFileTest()
 				{
 					writeQ << tests[i].quiz[k].getVariant(j) << "\n";
 				}
-				if (i == len - 1)
+				if ((i == len - 1) && (k == len2 - 1))
 				{
 					writeQ << tests[i].quiz[k].getCorrectVariant();
 				}
@@ -142,8 +140,6 @@ void TestManager::writeFileTest()
 		std::cout << "File cannot open" << '\n';
 	}
 	writeQ.close();
-
-
 }
 
 void TestManager::writeVectorTest()
@@ -205,8 +201,7 @@ void TestManager::writeVectorTest()
 					break;
 				case 4:tmp.setVariant(word, 3);
 					break;
-					///
-				case 5:tmp.setCorrectVariant(reinterpret_cast <char>(&word));
+				case 5:tmp.setCorrectVariant(word);
 					break;
 				}
 				count++;
