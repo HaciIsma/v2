@@ -10,6 +10,10 @@ public:
 
 	std::string getName();
 	std::string getCategory();
+
+
+	friend class TestManager;
+
 private:
 	std::string name;
 	std::string category;
