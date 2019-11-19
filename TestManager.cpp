@@ -40,6 +40,7 @@ void TestManager::addTest()
 		temp.quiz.push_back(tmp);
 		std::cout << "add(+): ";
 		std::cin >> op;
+		std::cin.ignore();
 	} while (op == '+');
 
 	tests.push_back(temp);
@@ -52,11 +53,11 @@ bool is_empty1(std::ifstream& pFile)
 
 void TestManager::writeFileTest()
 {
-	std::ofstream write;
-	write.open("Test", std::ios::app);
+	std::ofstream writeT;
+	writeT.open("Test", std::ios::app);
 	bool check = false;
 
-	if (write.is_open())
+	if (writeT.is_open())
 	{
 		std::size_t len = tests.size();
 		for (size_t i = 0; i < len; i++)
@@ -67,31 +68,71 @@ void TestManager::writeFileTest()
 				check = true;
 			}
 			read.close();
-
 			if (check)
 			{
-				write << tests[i].getName() << "\n";
+				writeT << tests[i].getName() << "\n";
 			}
 			else
 			{
-				write << "\n" << tests[i].getName() << "\n";
+				writeT << "\n" << tests[i].getName() << "\n";
 			}
-			write << tests[i].getName() << "\n";
-			write << tests[i].getCategory() << "\n";
+
+			//std::cout << "";
+
+			if (i == len - 1)
+			{
+				writeT << tests[i].getCategory();
+			}
+			else
+			{
+				writeT << tests[i].getCategory() << "\n";
+			}
+		}
+	}
+	else
+	{
+		std::cout << "File cannot open" << '\n';
+	}
+	writeT.close();
+
+	std::ofstream writeQ;
+	writeQ.open("Question");
+	bool check1 = false;
+	if (writeQ.is_open())
+	{
+		std::string word;
+		std::size_t len = tests.size();
+		for (size_t i = 0; i < len; i++)
+		{
 			std::size_t len2 = tests[i].quiz.size();
 			for (size_t k = 0; k < len2; k++)
 			{
-				write << tests[i].quiz[k].getQuestion() << "\n";
+				std::ifstream read("Question");
+				if (is_empty1(read))
+				{
+					check1 = true;
+				}
+				read.close();
+				if (check)
+				{
+					writeQ << tests[i].quiz[k].getQuestion() << "\n";
+				}
+				else
+				{
+					writeQ << "\n" << tests[i].quiz[k].getQuestion() << "\n";
+				}
+
 				for (size_t j = 0; j < 4; j++)
 				{
-					if ((i == len - 1) && (k == len2 - 1) && (j == 3))
-					{
-						write << tests[i].quiz[k].getVariant(j);
-					}
-					else
-					{
-						write << tests[i].quiz[k].getVariant(j) << "\n";
-					}
+					writeQ << tests[i].quiz[k].getVariant(j) << "\n";
+				}
+				if (i == len - 1)
+				{
+					writeQ << tests[i].quiz[k].getCorrectVariant();
+				}
+				else
+				{
+					writeQ << tests[i].quiz[k].getCorrectVariant() << "\n";
 				}
 			}
 		}
@@ -100,37 +141,87 @@ void TestManager::writeFileTest()
 	{
 		std::cout << "File cannot open" << '\n';
 	}
+	writeQ.close();
+
+
 }
 
 void TestManager::writeVectorTest()
 {
-	std::ifstream read;
+	Test temp;
+	std::ifstream readT;
 	std::string reading;
-	std::string word;
-	read.open("Test");
-	if (read.is_open())
+	readT.open("Test");
+	if (readT.is_open())
 	{
-		Test temp;
-		Question tmp;
-		while (!read.eof())
+		std::string word;
+		while (!readT.eof())
 		{
 			std::size_t count = 0;
-			while (true)
+			while (count != 2)
 			{
-				read >> reading;
+				readT >> reading;
 				word = reading;
+				switch (count)
+				{
+				case 0:temp.setName(word);
+					break;
+				case 1:temp.setCategory(word);
+					break;
+				}
 				count++;
 			}
-
 		}
-		
 	}
 	else
 	{
 		std::cout << "File cannot open ";
 	}
-}
+	readT.close();
 
+	Question tmp;
+	std::ifstream readQ;
+	std::string reading1;
+	readQ.open("Question");
+	if (readQ.is_open())
+	{
+		std::string word;
+		while (!readQ.eof())
+		{
+			std::size_t count = 0;
+			while (count != 6)
+			{
+				readQ >> reading1;
+				word = reading1;
+				switch (count)
+				{
+				case 0:tmp.setQuestion(word);
+					break;
+				case 1:tmp.setVariant(word, 0);
+					break;
+				case 2:tmp.setVariant(word, 1);
+					break;
+				case 3:tmp.setVariant(word, 2);
+					break;
+				case 4:tmp.setVariant(word, 3);
+					break;
+					///
+				case 5:tmp.setCorrectVariant(reinterpret_cast <char>(&word));
+					break;
+				}
+				count++;
+			}
+		}
+	}
+	else
+	{
+		std::cout << "File cannot open";
+	}
+	readQ.close();
+
+	temp.quiz.push_back(tmp);
+	tests.push_back(temp);
+}
 
 
 ////
