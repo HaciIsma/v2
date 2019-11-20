@@ -9,6 +9,4 @@ public:
 	std::size_t writedTestSize();
 	std::size_t succesfulTestsize();
 	std::size_t unsuccesfulTestsize();
-
-private: 
 };

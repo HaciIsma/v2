@@ -105,33 +105,12 @@ void TestManager::writeFileTest()
 			std::size_t len2 = tests[i].quiz.size();
 			for (size_t k = 0; k < len2; k++)
 			{
-				std::ifstream read("Question");
-				if (is_empty1(read))
-				{
-					check1 = true;
-				}
-				read.close();
-				if (check1)
-				{
-					writeQ << tests[i].quiz[k].getQuestion() << "\n";
-				}
-				else
-				{
-					writeQ << "\n" << tests[i].quiz[k].getQuestion() << "\n";
-				}
-
+				writeQ << tests[i].quiz[k].getQuestion() << "\n";
 				for (size_t j = 0; j < 4; j++)
 				{
 					writeQ << tests[i].quiz[k].getVariant(j) << "\n";
 				}
-				if ((i == len - 1) && (k == len2 - 1))
-				{
-					writeQ << tests[i].quiz[k].getCorrectVariant();
-				}
-				else
-				{
-					writeQ << tests[i].quiz[k].getCorrectVariant() << "\n";
-				}
+				writeQ << tests[i].quiz[k].getCorrectVariant();
 			}
 		}
 	}
@@ -218,13 +197,54 @@ void TestManager::writeVectorTest()
 	tests.push_back(temp);
 }
 
-
-////
-//void TestManager::Result();
-////
-//void TestManager::allResults();
-//void TestManager::addResultFile();
 //void TestManager::goToTest();
 //void TestManager::chooseTest();
-//void TestManager::pauseTest();
-//void TestManager::pauseTestAdd();
+
+void TestManager::pauseTest()
+{
+	std::ifstream read;
+	std::size_t num;
+	read.open("pauseTest");
+	if (read.is_open())
+	{
+		while (!read.eof())
+		{
+			std::size_t count = 0;
+			read >> num;
+
+		}
+	}
+	else
+	{
+		std::cout << "File cannot open" << "\n";
+	}
+}
+
+
+
+
+void TestManager::pauseTestAdd(std::size_t testindex,std::size_t quizindex,std::size_t correctVariantSize) 
+{
+	std::ofstream write;
+	write.open("pauseTest",std::ios::app);
+	if (write.is_open())
+	{
+		bool check = false;
+		std::ifstream read("pauseTest");
+		if (is_empty1(read))
+		{
+			check = true;
+		}
+		read.close();
+		if (!check)
+		{
+			write << "\n";
+		}
+		write << testindex << " " << quizindex << " " << correctVariantSize;
+	}
+	else
+	{
+		std::cout << "File cannot open" << '\n';
+	}
+	write.close();
+}

@@ -10,15 +10,10 @@ public:
 	void addTest();
 	void writeFileTest();
 	void writeVectorTest();
-	////
-	//void Result();
-	////
-	//void allResults();
-	//void addResultFile();
 	//void goToTest();
 	//void chooseTest();
-	//void pauseTest();
-	//void pauseTestAdd();
+	void pauseTest();
+	void pauseTestAdd(std::size_t testindex, std::size_t quizindex, std::size_t correctVariantSize);
 
 private:
 	std::vector<Test>tests;

@@ -14,7 +14,7 @@ public:
 	std::string getTelephone();
 	std::string getUsername();
 	std::string getPassword();
-
+	
 private:
 	std::string name;
 	std::string surname;
