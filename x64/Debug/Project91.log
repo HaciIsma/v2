@@ -1,2 +1,3 @@
 ﻿  TestManager.cpp
+C:\Users\Step\Desktop\v2\v2\TestManager.cpp(228,15): warning C4101: 'id': unreferenced local variable
   Project91.vcxproj -> C:\Users\Step\Desktop\x64\Debug\Test Sistemi.exe

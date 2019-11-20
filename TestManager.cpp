@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <conio.h>
 
 void TestManager::addTest()
 {
@@ -197,8 +198,50 @@ void TestManager::writeVectorTest()
 	tests.push_back(temp);
 }
 
-//void TestManager::goToTest();
-//void TestManager::chooseTest();
+void TestManager::goToTest(std::size_t indexquiz = 0, std::size_t indexTest)
+{
+	char ch;
+	std::size_t count = 0;
+	std::size_t len = tests[indexTest].quiz.size();
+	for (size_t i = indexquiz; i < len; i++)
+	{
+		std::cout << "Question: " << tests[indexTest].quiz[i].getQuestion() << '\n';
+
+		for (size_t k = 0; k < 4; k++)
+		{
+			std::cout << char(k + 65) << " ) variant: " << tests[indexTest].quiz[i].getVariant(k) << '\n';
+		}
+		ch = _getch();
+		if (ch == (tests[indexTest].quiz[i].getCorrectVariant())[0])
+		{
+			count++;
+		}
+	}
+}
+
+
+void TestManager::chooseTest() {
+
+	std::size_t len = tests.size();
+	if (len)
+	{
+		std::size_t id;
+		std::string category;
+		for (size_t i = 0; i < len; i++)
+		{
+			std::cout << "Test: " << i + 1 << '\n';
+			std::cout << "Name: " << tests[i].getName() << '\n';
+			std::cout << "Category: " << tests[i].getCategory() << '\n';
+		}
+	}
+	else
+	{
+		std::cout << "Not eny Test" << '\n';
+		return;
+	}
+
+};
+
 
 void TestManager::pauseTest()
 {
@@ -211,7 +254,6 @@ void TestManager::pauseTest()
 		{
 			std::size_t count = 0;
 			read >> num;
-
 		}
 	}
 	else
@@ -220,13 +262,10 @@ void TestManager::pauseTest()
 	}
 }
 
-
-
-
-void TestManager::pauseTestAdd(std::size_t testindex,std::size_t quizindex,std::size_t correctVariantSize) 
+void TestManager::pauseTestAdd(std::size_t testindex, std::size_t quizindex, std::size_t correctVariantSize)
 {
 	std::ofstream write;
-	write.open("pauseTest",std::ios::app);
+	write.open("pauseTest", std::ios::app);
 	if (write.is_open())
 	{
 		bool check = false;

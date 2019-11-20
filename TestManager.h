@@ -10,8 +10,8 @@ public:
 	void addTest();
 	void writeFileTest();
 	void writeVectorTest();
-	//void goToTest();
-	//void chooseTest();
+	void goToTest(std::size_t indexTest, std::size_t indexquiz = 0);
+	void chooseTest();
 	void pauseTest();
 	void pauseTestAdd(std::size_t testindex, std::size_t quizindex, std::size_t correctVariantSize);
 
