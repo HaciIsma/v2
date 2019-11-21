@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Result">
       <UniqueIdentifier>{93eb7e3d-55ef-44cf-a165-6e5384e569dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Test">
+      <UniqueIdentifier>{ce9624e3-cf4b-41ba-bea1-e67c147e04f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,17 +57,23 @@
     <ClCompile Include="User.cpp">
       <Filter>Source Files\User</Filter>
     </ClCompile>
-    <ClCompile Include="Question.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Result.cpp">
       <Filter>Source Files\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="Statics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultController.cpp">
+      <Filter>Source Files\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="Question.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Source Files\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="TestManager.cpp">
+      <Filter>Source Files\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

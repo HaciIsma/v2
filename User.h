@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+//#include "ResultController.h"
 class User
 {
 public:
@@ -21,4 +22,6 @@ private:
 	std::string telephone;
 	std::string username;
 	std::string password;
+
+//	ResultController userResults;
 };

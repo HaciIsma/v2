@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <conio.h>
+#include "ResultController.h"
 
 void TestManager::addTest()
 {
@@ -217,16 +218,15 @@ void TestManager::goToTest(std::size_t indexquiz = 0, std::size_t indexTest)
 			count++;
 		}
 	}
-}
 
+}
 
 void TestManager::chooseTest() {
 
 	std::size_t len = tests.size();
+	std::size_t id;
 	if (len)
 	{
-		std::size_t id;
-		std::string category;
 		for (size_t i = 0; i < len; i++)
 		{
 			std::cout << "Test: " << i + 1 << '\n';
@@ -239,7 +239,9 @@ void TestManager::chooseTest() {
 		std::cout << "Not eny Test" << '\n';
 		return;
 	}
-
+	std::cout << "Choose: ";
+	std::cin >> id;
+	goToTest(id);
 };
 
 
@@ -264,6 +266,7 @@ void TestManager::pauseTest()
 
 void TestManager::pauseTestAdd(std::size_t testindex, std::size_t quizindex, std::size_t correctVariantSize)
 {
+	/*
 	std::ofstream write;
 	write.open("pauseTest", std::ios::app);
 	if (write.is_open())
@@ -286,4 +289,5 @@ void TestManager::pauseTestAdd(std::size_t testindex, std::size_t quizindex, std
 		std::cout << "File cannot open" << '\n';
 	}
 	write.close();
+	*/
 }

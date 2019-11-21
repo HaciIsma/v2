@@ -3,7 +3,7 @@
 #include <fstream>
 
 
-void AccountManager::signUp()
+std::string AccountManager::signUp()
 {
 	User temp;
 	std::string name;
@@ -24,8 +24,23 @@ void AccountManager::signUp()
 	std::getline(std::cin, telephone);
 	temp.setTelephone(telephone);
 
-	std::cout << "Username: ";
-	std::getline(std::cin, username);
+	bool check = false;
+
+	do
+	{
+		check = false;
+		std::cout << "Username: ";
+		std::getline(std::cin, username);
+		std::size_t len = users.size();
+		for (size_t i = 0; i < len; i++)
+		{
+			if (users[i].getUsername() == username)
+			{
+				check = true;
+				break;
+			}
+		}
+	} while (check);
 	temp.setUsername(username);
 
 	std::cout << "Password: ";
@@ -33,6 +48,7 @@ void AccountManager::signUp()
 	temp.setPassword(password);
 
 	users.push_back(temp);
+	return username;
 }
 
 bool is_empty(std::ifstream& pFile)
@@ -128,7 +144,12 @@ void AccountManager::usersWriteVector()
 	read.close();
 }
 
-void AccountManager::signIn()
+std::size_t AccountManager::userSize()
+{
+	return users.size();
+}
+
+std::string AccountManager::signIn()
 {
 	std::string checkUsername;
 	std::string checkPassword;
@@ -147,14 +168,19 @@ void AccountManager::signIn()
 			if (users[i].getPassword() == checkPassword)
 			{
 				std::cout << "Welcome system" << '\n';
-				return;
+				return checkUsername;
 			}
 			else
 			{
 				std::cout << "Wrong password" << '\n';
-				return;
 			}
 		}
 	}
 	std::cout << "Wrong username" << '\n';
+	return ".";
+}
+
+User& AccountManager::operator[](std::size_t index)
+{
+	return users[index];
 }

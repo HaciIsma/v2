@@ -129,6 +129,8 @@
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Question.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="ResultController.cpp" />
+    <ClCompile Include="Statics.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="TestManager.cpp" />
     <ClCompile Include="User.cpp" />
